@@ -16,7 +16,7 @@ section,
 p,
 span,
 svg{
-  transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.5s, color 0.5s, transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 :root{
@@ -27,7 +27,7 @@ svg{
   /* Light Themed */
   --color-text-light: #333332;
   --color-background-light: #faf4e5;
-  --color-pink-light:  #e5a1aa;
+  --color-pink-light: #e5a1aa;
   --color-green-light: #7ad0ac;
   --color-blue-light: #8395cd;
   --color-button-pink: #e36677;
@@ -176,21 +176,32 @@ svg{
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 50%;
+  top: 58%;
   left: 50%;
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--color-text);
+  font-weight: 700;
+  font-size: 36px;
+  color: #e5e4e2;
   transform: translate(-50%, -50%);
 }
+
 .arrow-svg-wrapper{
   position: absolute;
   top: 90%;
   left: 50%;
   opacity: 0;
-  color: var(--color-text);
+  color: var(--color-pink);
   transform: translate(-50%, -50%);
-  animation: bounce 0.5s ease-in alternate infinite;
+  animation: bounce 0.8s ease-in alternate infinite, glow 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(240, 125, 157, 0.6));
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(240, 125, 157, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(240, 125, 157, 1));
+  }
 }
 
 @keyframes bounce{
@@ -429,19 +440,43 @@ svg{
   display: flex;
   justify-content: center;
   align-items: center; 
-  background-color: var(--color-green-light);
+  background: linear-gradient(135deg, #7ad0ac 0%, #5ab88f 100%);
   border-radius: 25px;
   padding: 0px 0;
   margin: 0px 0px;
   color: #faf4e5;
-  box-shadow: 4px 4px 0 var(--color-button-green);
-  transition: transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 4px 15px rgba(122, 208, 172, 0.4), 4px 4px 0 var(--color-button-green);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   border: none;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.green-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+  border-radius: 25px;
+}
+
+.green-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(122, 208, 172, 0.6), 4px 4px 0 var(--color-button-green);
+}
+
+.green-button:hover::before {
+  left: 100%;
 }
 
 .green-button:active{
   transform: translateX(4px) translateY(4px);
-  box-shadow: 0 0 0 var(--color-button-green);
+  box-shadow: 0 2px 5px rgba(122, 208, 172, 0.3);
 }
 
 .button-div{
@@ -451,11 +486,26 @@ svg{
 }
 
 .project-link {
-  color: inherit; /* Use the same color as surrounding text */
-  text-decoration: none; /* Remove underline */
+  display: inline-block;
+  color: var(--color-pink);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 4px 0;
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, var(--color-pink), #ff6b7a);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  margin: 10px 0;
 }
+
 .project-link:hover {
-  text-decoration: underline; /* Add underline on hover */
+  background-size: 100% 2px;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 8px rgba(240, 125, 157, 0.3));
 }
 
 /* Section */
@@ -517,7 +567,17 @@ svg{
   padding: 20% 5%;
   border-bottom: 2px solid var(--color-pink);
   padding-bottom: 400px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
+
+.section-intro-wrapper:hover {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(240, 125, 157, 0.1);
+}
+
 .section-intro-wrapper:nth-child(3){
   border-bottom: 2px solid var(--color-green);
 }
@@ -526,6 +586,10 @@ svg{
   position: relative;
   padding: 20% 5%;
   z-index: 99999999;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 .section-heading{
@@ -534,6 +598,13 @@ svg{
   line-height: 1.8;
   margin-top: 64px;
   color: var(--color-text);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.section-heading:hover {
+  transform: translateX(5px);
+  color: var(--color-pink);
 }
 
 .section-text{
@@ -541,6 +612,12 @@ svg{
   margin-top: 18px;
   font-size: 16px;
   color: var(--color-text);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.section-text:hover {
+  opacity: 1;
 }
 
 .credit{
@@ -555,17 +632,22 @@ svg{
 .section-title{
   position: relative;
   color: var(--color-pink);
+  filter: drop-shadow(0 0 8px rgba(240, 125, 157, 0.3));
 }
 
 .section-title-text{
   display: block;
   font-size: 40px;
-  font-weight: 500;
+  font-weight: 700;
   transform-origin: left;
   transform: skewY(25deg);
   z-index: 5;
   text-transform: uppercase;
-  color: var(--color-pink);
+  background: linear-gradient(135deg, var(--color-pink) 0%, #ff6b7a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
 }
 
 .styleOne, .styleTwo, .styleThree{
@@ -574,23 +656,28 @@ svg{
   width: 100%;
   max-width: 278px;
   height: 60px;
-  border: 1px solid var(--color-pink);
+  border: 2px solid var(--color-pink);
   transform-origin: left;
   transform: skewY(-25deg);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(240, 125, 157, 0.3);
 }
 
 .styleOne{
   top: 0px;
+  border-style: solid;
 }
 
 .styleTwo{
   top: 80px;
+  border-style: dashed;
 }
 
 .styleThree{
   top: 80px;
   transform: skewY(25deg);
-  background-color: var(--color-pink);
+  background: linear-gradient(135deg, var(--color-pink) 0%, rgba(240, 125, 157, 0.7) 100%);
+  box-shadow: 0 0 20px rgba(240, 125, 157, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .section-number{
@@ -698,6 +785,7 @@ svg{
   .hero-second-subheading{
     font-size: 18px;
   }
+  
   .facts{
     font-size: 15px;
   }

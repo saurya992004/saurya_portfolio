@@ -17,9 +17,9 @@ export default class Preloader extends EventEmitter{
         this.device = this.sizes.device;
 
         if(this.sizes.width > 580){
-            document.querySelector(".hero-main-description").textContent = "Aspiring Software Developer | Computer Science Student";
+            document.querySelector(".hero-main-description").textContent = "AI Builder";
         }else{
-            document.querySelector(".hero-main-description").textContent = "Aspiring Software Developer";
+            document.querySelector(".hero-main-description").textContent = "AI Builder";
         }                                                                   
 
         this.sizes.on("switchdevice",(device)=>{
@@ -37,7 +37,8 @@ export default class Preloader extends EventEmitter{
         convert(document.querySelector(".hero-main-title"));
         convert(document.querySelector(".hero-main-description"));
         convert(document.querySelector(".hero-second-subheading"));
-        convert(document.querySelector(".second-sub"));
+        const secondSub = document.querySelector(".second-sub");
+        if(secondSub) convert(secondSub);
         this.room = this.experience.world.room.actualRoom;
         this.roomChildren = this.experience.world.room.roomChildern;
     }
@@ -50,7 +51,7 @@ export default class Preloader extends EventEmitter{
                 opacity: 0,
                 delay: 1,
                 onComplete: ()=>{
-                    document.querySelector(".preloader").classList.add(".hidden");
+                    document.querySelector(".preloader").classList.add("hidden");
                 }
             })
             if(this.device === "desktop"){

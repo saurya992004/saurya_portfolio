@@ -48,7 +48,7 @@ export default class Room{
 
             else if(child.name === "Moni"){
                 child.children[1].material = new THREE.MeshBasicMaterial({
-                    map: this.resources.items.screen,
+                    color: 0x1a1a1a,
                 });
             }
 
