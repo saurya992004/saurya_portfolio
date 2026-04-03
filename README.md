@@ -39,9 +39,7 @@ Follow these steps to run the portfolio locally on your machine:
 4. **View the Site**
    Open your browser and navigate to the local server address provided in the terminal (usually `http://localhost:5174/`).
 
-## Acknowledgements
 
-Special thanks to the original creators and contributors who inspired aspects of this 3D web experience. Let's keep building intelligent systems!
 
 ---
 **Saurya Tripathi** | AI Builder
