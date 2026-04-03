@@ -2,7 +2,8 @@
 
 Welcome to my 3D digital workspace! This portfolio leverages **Three.js** and **GSAP** to create an interactive, animated web experience. The 3D room is smoothly loaded on the web, with captivating scroll-animations that make exploring my projects and skills fun and engaging.
 
-Deployed Link: https://saarya-portfolio.vercel.app
+## 🚀 Live Demo  
+🔗 [View Portfolio](https://saurya-portfolio.vercel.app/)
 
 ## Features
 
